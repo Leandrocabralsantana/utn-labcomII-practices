@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Perfil</h1>
+    <div class="profile-data">
+        <form action="">
+            <label for="Usuario" class="USUARIO">Usuario</label>
+            <input type="text" id="estudiante" name="estudiante" value="ESTUDIANTE" readonly>
+            <label for="nombre" class="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="email" class="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="edad" class="edad">Edad</label>
+            <input type="number" id="edad" name="edad">
+            <label for="nacionalidad" class="nacionalidad">Nacionalidad</label>
+            <select name="nacionalidad" id="nacionalidad">
+                <option value="argentina">Argentina</option>
+                <option value="brasil">Brasil</option>
+                <option value="chile">Chile</option>
+                <option value="uruguay">Uruguay</option>
+            </select>
+            <label for="condicion-laboral" class="condicion-laboral">Condición laboral</label>
+            <select name="condicion-laboral" id="condicion-laboral">
+                <option value="desempleado">Trabajo full time</option>
+                <option value="busqueda-laboral">Trabajo part time</option>
+                <option value="trabajo-part-time">En búsqueda laboral</option>
+                <option value="trabajo-full-time">Desempleado</option>
+            </select>
+            <label for="gustos-musicales" class="gustos-musicales">Gustos musicales</label>
+            <input type="text" id="gustos-musicales" name="gustos-musicales">
+            <label for="comidas-preferidas" class="comidas-preferidas">Comidas preferidas</label>
+            <select name="comidas-preferidas" id="comidas-preferidas">
+                <option value="pizza-americana">Pizza con panceta</option>
+                <option value="hamburguesa-con-queso">Hamburguesa con queso</option>
+                <option value="milanesa-con-papas-fritas">Milanesa con papas fritas</option>
+                <option value="asado">Asado</option>
+            <input type="submit" value="Enviar" id="enviar" name="enviar">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Recordar usuario</label>
+        </form>
+    </div>
+</body>
+</html>
