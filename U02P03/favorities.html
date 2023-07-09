@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUP LC2 - TP Integrador</title>
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/pages/favorities.css" /> <!-- Aunque no se use aún -->
+  <link rel="shortcut icon" href="./img/IconoCine.png">
+
+  <!-- Scripts JS -->
+  <script defer src="./js/common.js"></script>
+  <script defer src="./js/pages/favorities.js"></script>
+
+
+
+</head>
+
+<body>
+  <header>
+    <h1>
+      <!--Titulo Cabecera-->
+      <span>
+        <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon"/>
+        Cartelera de Cine
+    </span>    </h1>
+    <nav>
+      <!--Menu Superior-->
+      <ul>
+        <li><a href="index.html">Cartelera</a></li>
+        <li class="current-page"><a href="">Mis Favoritas</a></li>
+        <li><a href="help.html">Ayuda</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Contenido principal de la página -->
+  <main>
+    <h2>Mis Peliculas Favoritas</h2>
+      <!--Sección contenido de paliculas favoritas-->
+       <div id="no-favorites">
+        <p>No tiene películas seleccionadas en sus favoritos</p>
+       </div>
+      <div class="contenedorPeliculasFavoritas" id="contenedorPeliculasFavoritas"></div>
+     </main>
+  <footer>
+    <p>Desarrollado con ♥ - LC2</p>
+  </footer>
+
+</body>
+
+</html>

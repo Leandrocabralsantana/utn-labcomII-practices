@@ -1,61 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/index.css" />
-    <title>Document</title>
+    <title>TUP LC2 - TP Integrador - Cine</title>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/pages/index.css" />
+    <link rel="stylesheet" href="./css/pages/favorities.css" /> <!-- Aunque no se use aún -->
+    <link rel="shortcut icon" href="./img/IconoCine.png">
+    <!-- Scripts JS -->
+    <script defer src="./js/common.js"></script>
+    <script defer src="./js/pages/index.js"></script>
+
   </head>
+
   <body>
-    <!-- Encabezado -->
     <header>
-      <h1>Hola mundo!</h1>
-    </header>
-    <div class="container">
-      <!-- Navegación / cotenedor izquierdo -->
+      <h1>
+        <!--Titulo Cabecera-->
+        <span>
+            <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon"/>
+            Cartelera de Cine
+        </span>
+      </h1>
       <nav>
+        <!--Menu Superior-->
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="multimedia.html">Multimedia</a></li>
-          <li><a href="contact.html">Contacto</a></li>
+          <li class="current-page"><a href="index.html">Cartelera</a></li>
+          <li><a href="favorities.html">Mis Favoritas</a></li>
+          <li><a href="help.html">Ayuda</a></li>
         </ul>
       </nav>
-      <!-- Contenedor principal -->
-      <main>
-        <section>
-            <img src="img/imagen1.jpg" alt="imagen1" />
-            <video src="video/video1.mp4" controls></video>
-            <audio src="audio/audio1.mp3" controls></audio>
-          <h2>Noticias</h2>
-          <p>
-            <ul>
-                <li><a href="">Noticia 1</a></li>
-                <li><a href="">Noticia 2</a></li>
-                <li><a href="">Noticia 3</a></li>
-              </ul>
-          </p>
-        </section>
-        <section>
-            <h2>Servicios</h2>
-            <p>
-              <ul>
-                  <li><a href="">Servicio 1</a></li>
-                  <li><a href="">Servicio 2</a></li>
-                  <li><a href="">Servicio 3</a></li>
-                </ul>
-            </p>
-          </section>
-      </main>
-      <!-- Contenedor secundario / derecho -->
-      <div class="right">
-        <h2>Info</h2>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-      </div>
-    </div>
-    <!-- Pie de Página-->
+    </header>
+    <!-- Contenido principal de la página -->
+    <main>
+      <h2>Últimas Películas en Cartelera</h2>
+      <section id="form-movie-new">
+        <form onsubmit="return false;">
+          <p>Agregar película favorita por código</p>
+          <input type="text" name="codigoPelicula" id="codigoPelicula">
+          <input type="button" onclick="agregarFavorito()" value="Agregar">
+        </form>
+        <!--Seccion para agregar una palicula favorita por codigo-->
+      </section>
+      <section id="sec-messages">
+        <div id="success-message">
+          Película agregada con éxito.
+        </div>
+        <div id="duplicate-movie-message">
+          La Película ingresada ya se encuentra almacenada.
+        </div>
+        <div id="api-error-message">
+          Error: La Película seleccionada no se encuentra en la API o se produjo
+          un error al consultar.
+        </div>
+      </section>
+      <section id="sec_peliculas">
+        <!--Seccion visualizacion de peliculas-->
+        <div class="contenedorPeliculas" id="contenedorPeliculas"></div>
+      </section>
+      <section id="sec_paginador_peliculas">
+        <!--Seccion de Paginacion-->
+        <div class="paginacion" id="paginacion">
+          <button id="btnAnterior">Anterior</button>
+          <button id="btnSiguiente">Siguiente</button>
+        </div>
+      </section>
+    </main>
     <footer>
-      <p>© copyright labcomII.com</p>
+      <p>Desarrollado con ♥ - LC2</p>
     </footer>
   </body>
 </html>

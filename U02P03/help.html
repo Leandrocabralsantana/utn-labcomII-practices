@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUP LC2 - TP Integrador</title>
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/pages/help.css">
+  <link rel="shortcut icon" href="./img/IconoCine.png">
+
+  <!-- Scripts JS -->
+  <script defer src="./js/common.js"></script>
+  <script defer src="./js/pages/help.js"></script>
+
+
+</head>
+
+<body>
+  <header>
+    <h1>
+      <!--Titulo Cabecera-->
+      <span>
+        <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon"/>
+        Cartelera de Cine
+    </span>    </h1>
+    <nav>
+      <!--Menu Superior-->
+      <ul>
+        <li><a href="index.html">Cartelera</a></li>
+        <li><a href="favorities.html">Mis Favoritas</a></li>
+        <li class="current-page"><a href="help.html">Ayuda</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Contenido principal de la página -->
+  <main>
+    <section id="sec_ayuda">
+      <!-- Sección de texto de ayuda-->
+      <h2>Ayuda Cine App v.1</h2>
+      <p>Esta App te permite consultar la cartelera de cine utilizando la API de <a href="https://www.themoviedb.org/documentation/api" target="_blank">The movie database API.</a></p>
+      <p>Para poder registar sus películas favoritas deberá <a href="index.html">Agregar Favorito</a> desde la cartelera y luego visualizar nuestos favoritos desde <a href="favorities.html">Mis Favoritas.</a><br>
+      Si tiene alguna sugerencia o inconveniente por favor complete el siguiente formulario y envienoslo. Lo contactaremos a la brevedad.</p>
+   
+    </section>  
+    <section id="form-cine_contacto">
+      <!-- Sección donde se debe colocar el formulario de contacto-->
+      <form class="form-container">
+        <div id="form-container-div">
+          <p>Nombre:</p>
+          <label for="name"></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <p>Email:</p>
+          <label for="email"></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <p>Mensaje:</p>
+          <label for="message"></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div>
+          <button type="reset">Limpiar</button>
+          <button type="submit">Enviar</button>
+        </div>
+        <div id="error-message">
+          <p id="form-message">Ingrese un Email válido</p>
+        </div>
+      </form>
+    </section>
+    <section id="sec-cine-result"></section>
+    <!-- Sección donde se debe mostrar los mensajes de error -->
+    </section>
+    <p></p>
+  </main>
+  <footer>
+    <p>Desarrollado con ♥ - LC2</p>
+  </footer>
+</body>
+
+</html>

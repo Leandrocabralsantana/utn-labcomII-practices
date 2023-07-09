@@ -1,0 +1,139 @@
+#sec_peliculas {
+  margin-top: 20px;
+}
+.contenedorPeliculas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 0 auto;
+}
+
+#contenedorPeliculas {
+  gap: 20px;
+}
+
+
+#contenedorPeliculas img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+#contenedorPeliculas h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+#contenedorPeliculas p {
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  font-size: 12px;
+  margin-top: 10px;
+  color: rgb(115, 140, 140);
+}
+
+
+
+#form-movie-new {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#success-message {
+  background-color: #28a745;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+#duplicate-movie-message {
+  background-color: #ffc107;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: none;
+}
+#api-error-message {
+  background-color: #dc3545;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+
+.paginacion {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.paginacion button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 38px;
+  width: 160px;
+  background-color: rgb(42, 27, 80);
+  color: #ffffff;
+  border-radius: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  transition: 0.3s ease all;
+}
+
+.paginacion button:hover {
+  background-color: var(--color-back-active)
+}
+
+
+#btnFavorites {
+  cursor: pointer;
+  background: rgb(124, 124, 124);
+  color: #ffffff;
+  display: flex;
+  font-size: 12px;
+  height: 38px;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  text-align: center;
+  width: 200px;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0px 3px 0px #373c3c;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+}
