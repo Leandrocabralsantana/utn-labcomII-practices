@@ -40,7 +40,7 @@
         <form onsubmit="return false;">
           <p>Agregar película favorita por código</p>
           <input type="text" name="codigoPelicula" id="codigoPelicula">
-          <input type="button" onclick="agregarFavorito()" value="Agregar">
+          <input type="button" onclick="agregarFavorito(document.getElementById('codigoPelicula').value)" value="Agregar">
         </form>
         <!--Seccion para agregar una palicula favorita por codigo-->
       </section>

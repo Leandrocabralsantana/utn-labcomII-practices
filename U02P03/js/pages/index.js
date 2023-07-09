@@ -14,17 +14,14 @@ const mostrarPeliculas = () => {
     .then((response) => response.json())
     .then((response) => {
       const peliculas = response.results;
-      const contenedorPeliculas = document.getElementById(
-        "contenedorPeliculas"
-      );
+      const contenedorPeliculas = document.getElementById("contenedorPeliculas");
 
       peliculas.forEach((pelicula) => {
         const divPelicula = document.createElement("div");
         divPelicula.classList.add("contenedorPeliculas");
 
         const imgPelicula = document.createElement("img");
-        imgPelicula.src =
-          "https://image.tmdb.org/t/p/w500" + pelicula.poster_path;
+        imgPelicula.src = "https://image.tmdb.org/t/p/w500" + pelicula.poster_path;
         imgPelicula.alt = "Poster de la película";
 
         const h3Pelicula = document.createElement("h3");
@@ -34,24 +31,22 @@ const mostrarPeliculas = () => {
         pCodigo.innerHTML = "<b>Código:</b> " + pelicula.id;
 
         const pTituloOriginal = document.createElement("p");
-        pTituloOriginal.innerHTML =
-          "<b>Título Original:</b> " + pelicula.original_title;
+        pTituloOriginal.innerHTML = "<b>Título Original:</b> " + pelicula.original_title;
 
         const pIdiomaOriginal = document.createElement("p");
-        pIdiomaOriginal.innerHTML =
-          "<b>Idioma Original:</b> " + pelicula.original_language;
+        pIdiomaOriginal.innerHTML = "<b>Idioma Original:</b> " + pelicula.original_language;
 
         const pFechaEstreno = document.createElement("p");
         pFechaEstreno.innerHTML = "<b>Año:</b> " + pelicula.release_date;
-        
+
         const btnFavorites = document.createElement("button");
         const storedFavorites = localStorage.getItem("favoritos");
         let favoritos = [];
-    
+
         if (storedFavorites) {
           favoritos = JSON.parse(storedFavorites);
         }
-    
+
         if (favoritos.includes(pelicula.id)) {
           btnFavorites.textContent = "Eliminar de Favoritos";
           btnFavorites.addEventListener("click", () => {
@@ -82,75 +77,82 @@ const mostrarPeliculas = () => {
 
 mostrarPeliculas();
 
-const agregarFavorito = (codigoPelicula) => {
-  const storedFavorites = localStorage.getItem("favoritos");
-  let favoritos = [];
+agregarFavorito = (codigoPelicula) => {
+  console.log("Agregar a favoritos");
+  console.log(codigoPelicula);
 
-  if (storedFavorites) {
-    favoritos = JSON.parse(storedFavorites);
-  }
+  const codigo = parseInt(codigoPelicula);
 
-  if (favoritos.includes(codigoPelicula)) {
-    const duplicateMovieMessage = document.getElementById("duplicate-movie-message");
-    duplicateMovieMessage.style.display = "block";
-  } else {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZDgwMDgyYmI1Mzc2MTJmOTNlN2FmMjYwYzBkZTc1MCIsInN1YiI6IjY0YTlhNTJiZDFhODkzMDExYzMyNWNhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qSfYv81lQnLgQFmcWnKcNZUHQVpNNE5sUJ3luH4r3bE",
-      },
-      body: JSON.stringify({
-        media_type: "movie",
-        media_id: codigoPelicula,
-        favorite: true,
-      }),
-    };
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZDgwMDgyYmI1Mzc2MTJmOTNlN2FmMjYwYzBkZTc1MCIsInN1YiI6IjY0YTlhNTJiZDFhODkzMDExYzMyNWNhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qSfYv81lQnLgQFmcWnKcNZUHQVpNNE5sUJ3luH4r3bE",
+    },
+  };
 
-    fetch("https://api.themoviedb.org/3/account/{20122146}/favorite", options)
-      .then((response) => {
-        if (response.ok) {
-          if (response.status === 201 || response.status === 202) {
-            const successMessage = document.getElementById("success-message");
-            successMessage.style.display = "block";
-          }
-        } else if (response.status === 404 || response.status === 409) {
-          const apiErrorMessage = document.getElementById("api-error-message");
-          apiErrorMessage.style.display = "block";
-        } else {
-          console.log(
-            "Error al agregar la película a favoritos. Código de estado:",
-            response.status
-          );
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Datos de la película agregada:", data);
-        favoritos.push(codigoPelicula);
+  fetch(`https://api.themoviedb.org/3/movie/${codigo}`, options)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Película no encontrada");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      let favoritos = localStorage.getItem("favoritos");
+      if (favoritos) {
+        favoritos = JSON.parse(favoritos);
+      } else {
+        favoritos = [];
+      }
+
+      if (!favoritos.includes(codigo)) {
+        favoritos.push(codigo);
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
-        mostrarPeliculas();
-      })
-      .catch((error) => {
-        console.error("Error al agregar la película a favoritos:", error);
-      });
-  }
+
+        // Mostrar el mensaje de éxito
+        document.getElementById("success-message").style.display = "block";
+        document.getElementById("duplicate-movie-message").style.display = "none";
+        document.getElementById("api-error-message").style.display = "none";
+      } else {
+        // Mostrar el mensaje de película duplicada
+        document.getElementById("success-message").style.display = "none";
+        document.getElementById("duplicate-movie-message").style.display = "block";
+        document.getElementById("api-error-message").style.display = "none";
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+
+      // Mostrar el mensaje de error de la API
+      document.getElementById("success-message").style.display = "none";
+      document.getElementById("duplicate-movie-message").style.display = "none";
+      document.getElementById("api-error-message").style.display = "block";
+    });
 };
 
-const eliminarFavorito = (codigoPelicula) => {
-  console.log("Código de la película a eliminar:", codigoPelicula);
-  const storedFavorites = localStorage.getItem("favoritos");
-  let favoritos = [];
+eliminarFavorito = (codigoPelicula) => {
+  console.log("Eliminar de favoritos");
+  console.log(codigoPelicula);
 
-  if (storedFavorites) {
-    favoritos = JSON.parse(storedFavorites);
+  const codigo = parseInt(codigoPelicula);
+
+  let favoritos = localStorage.getItem("favoritos");
+  if (favoritos) {
+    favoritos = JSON.parse(favoritos);
   }
 
-  const index = favoritos.indexOf(codigoPelicula);
+  const index = favoritos.indexOf(codigo);
   if (index > -1) {
     favoritos.splice(index, 1);
-    localStorage.setItem("favoritos", JSON.stringify(favoritos)); 
-    mostrarPeliculas(); 
   }
+
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+  // Mostrar el mensaje de éxito
+  document.getElementById("success-message").style.display = "block";
+  document.getElementById("success-message").textContent = "Película eliminada de favoritos";
+  document.getElementById("duplicate-movie-message").style.display = "none";
+  document.getElementById("api-error-message").style.display = "none";
 };

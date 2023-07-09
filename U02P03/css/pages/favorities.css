@@ -4,17 +4,22 @@ main{
 }
 
 #sec-favorities-list {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    background: blue;
+  display: flex;
+  justify-content: center;
+}
 
+.contenedorPeliculasFavoritas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+.contenedorPeliculasFavoritas div{
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .contenedorPeliculas {
-    text-align: justify;
+  text-align: justify;
 }
 
 .contenedorPeliculas img {
@@ -38,6 +43,7 @@ main{
     color: rgb(109, 138, 138)
   }
 
+
   #no-favorites {
     display: none;
     justify-content: center;
@@ -48,20 +54,4 @@ main{
     padding: 20px;
     margin-bottom: 20px;
     color: white;
-  }
-  
-  #sec-favorities-list {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .contenedorPeliculasFavoritas { 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    background: pink;
   }

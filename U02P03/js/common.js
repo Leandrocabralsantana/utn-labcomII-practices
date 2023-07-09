@@ -47,3 +47,4 @@ const agregarPeliculaFavorita = (codigoPelicula) => {
     console.error("La película ya ha sido ingresada");
   }
 };
+
