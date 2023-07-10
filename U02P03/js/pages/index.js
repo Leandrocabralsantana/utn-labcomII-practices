@@ -1,4 +1,3 @@
-
 let currentPage = 1;
 const moviesPerPage = 20;
 const totalPages = 1000;
@@ -9,7 +8,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     spinnerModal.style.display = "none";
-  }, 1000); // Damos un tiempo adicional para que la transición se complete
+  }, 1000);
 }, 500);
 
 const mostrarPeliculas = () => {
@@ -29,16 +28,19 @@ const mostrarPeliculas = () => {
     .then((response) => response.json())
     .then((response) => {
       const peliculas = response.results;
-      const contenedorPeliculas = document.getElementById("contenedorPeliculas");
+      const contenedorPeliculas = document.getElementById(
+        "contenedorPeliculas"
+      );
 
-      contenedorPeliculas.innerHTML = ""; // Limpiar el contenedor de películas
+      contenedorPeliculas.innerHTML = "";
 
       peliculas.forEach((pelicula) => {
         const divPelicula = document.createElement("div");
         divPelicula.classList.add("contenedorPeliculas");
 
         const imgPelicula = document.createElement("img");
-        imgPelicula.src = "https://image.tmdb.org/t/p/w500" + pelicula.poster_path;
+        imgPelicula.src =
+          "https://image.tmdb.org/t/p/w500" + pelicula.poster_path;
         imgPelicula.alt = "Poster de la película";
 
         const h3Pelicula = document.createElement("h3");
@@ -48,10 +50,12 @@ const mostrarPeliculas = () => {
         pCodigo.innerHTML = "<b>Código:</b> " + pelicula.id;
 
         const pTituloOriginal = document.createElement("p");
-        pTituloOriginal.innerHTML = "<b>Título Original:</b> " + pelicula.original_title;
+        pTituloOriginal.innerHTML =
+          "<b>Título Original:</b> " + pelicula.original_title;
 
         const pIdiomaOriginal = document.createElement("p");
-        pIdiomaOriginal.innerHTML = "<b>Idioma Original:</b> " + pelicula.original_language;
+        pIdiomaOriginal.innerHTML =
+          "<b>Idioma Original:</b> " + pelicula.original_language;
 
         const pFechaEstreno = document.createElement("p");
         pFechaEstreno.innerHTML = "<b>Año:</b> " + pelicula.release_date;
@@ -69,14 +73,14 @@ const mostrarPeliculas = () => {
           btnFavorites.addEventListener("click", () => {
             const codigoPelicula = pelicula.id;
             eliminarFavorito(codigoPelicula);
-            btnFavorites.textContent = "Agregar a Favoritos"; // Cambiar el texto del botón
+            btnFavorites.textContent = "Agregar a Favoritos";
           });
         } else {
           btnFavorites.textContent = "Agregar a Favoritos";
           btnFavorites.addEventListener("click", () => {
             const codigoPelicula = pelicula.id;
             agregarFavorito(codigoPelicula);
-            btnFavorites.textContent = "Eliminar de Favoritos"; // Cambiar el texto del botón
+            btnFavorites.textContent = "Eliminar de Favoritos";
           });
         }
 
@@ -91,7 +95,6 @@ const mostrarPeliculas = () => {
         contenedorPeliculas.appendChild(divPelicula);
       });
 
-      // Actualizar la visibilidad de los botones de paginación
       const btnAnterior = document.getElementById("btn-anterior");
       const btnSiguiente = document.getElementById("btn-siguiente");
 
@@ -124,14 +127,13 @@ const irPaginaSiguiente = () => {
   }
 };
 
-
 mostrarPeliculas();
 
 const agregarFavorito = (codigoPelicula) => {
   const codigo = parseInt(codigoPelicula);
   if (isNaN(codigo)) {
     document.getElementById("api-error-message").style.display = "block";
-    return; // Detener la ejecución si no es un número
+    return;
   }
   const options = {
     method: "GET",
@@ -162,21 +164,20 @@ const agregarFavorito = (codigoPelicula) => {
         favoritos.push(codigo);
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
-        // Mostrar el mensaje de éxito
         document.getElementById("success-message").style.display = "block";
-        document.getElementById("duplicate-movie-message").style.display = "none";
+        document.getElementById("duplicate-movie-message").style.display =
+          "none";
         document.getElementById("api-error-message").style.display = "none";
       } else {
-        // Mostrar el mensaje de película duplicada
         document.getElementById("success-message").style.display = "none";
-        document.getElementById("duplicate-movie-message").style.display = "block";
+        document.getElementById("duplicate-movie-message").style.display =
+          "block";
         document.getElementById("api-error-message").style.display = "none";
       }
     })
     .catch((error) => {
       console.error(error);
 
-      // Mostrar el mensaje de error de la API
       document.getElementById("success-message").style.display = "none";
       document.getElementById("duplicate-movie-message").style.display = "none";
       document.getElementById("api-error-message").style.display = "block";
@@ -200,9 +201,9 @@ eliminarFavorito = (codigoPelicula) => {
 
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
-  // Mostrar el mensaje de éxito
   document.getElementById("success-message").style.display = "block";
-  document.getElementById("success-message").textContent = "Película eliminada de favoritos";
+  document.getElementById("success-message").textContent =
+    "Película eliminada de favoritos";
   document.getElementById("duplicate-movie-message").style.display = "none";
   document.getElementById("api-error-message").style.display = "none";
 };

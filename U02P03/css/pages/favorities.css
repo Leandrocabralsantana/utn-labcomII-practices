@@ -1,6 +1,6 @@
-main{
-    height: auto;
-    width: 100;
+main {
+  height: auto;
+  width: 100;
 }
 
 #sec-favorities-list {
@@ -15,26 +15,27 @@ main{
 }
 
 .contenedorPeliculas button {
-  margin-top: auto; 
+  margin-top: auto;
   align-self: center;
   margin-bottom: 35px;
-
 }
-
 
 .contenedorPeliculasFavoritas {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  border-bottom: gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
-  
+  border-bottom: gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .contenedorPeliculasFavoritas div {
   max-width: 100%;
   margin: 0 auto;
   padding-bottom: 20px;
   transition: opacity 0.3s ease-in-out;
-
 }
 
 .contenedorPeliculas {
@@ -42,55 +43,53 @@ main{
 }
 
 .contenedorPeliculas img {
-    height: auto;
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 15px;
+  height: auto;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 15px;
 }
 
 .contenedorPeliculas h3 {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-  }
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
 
-  .contenedorPeliculas #divVideo{
-    width: 100%;
-    height: 100%;
+.contenedorPeliculas #divVideo {
+  width: 100%;
+  height: 100%;
+}
 
-  }
-  
+.contenedorPeliculas p {
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
+    sans-serif;
+  font-size: 12px;
+  margin-top: 10px;
+  color: rgb(109, 138, 138);
+}
 
-  .contenedorPeliculas p {
-    font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', sans-serif;
-    font-size: 12px;
-    margin-top: 10px;
-    color: rgb(109, 138, 138)
-  }
+#no-favorites {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(242, 208, 114);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
 
+.fade-out {
+  opacity: 0;
+}
 
-  #no-favorites {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(242, 208, 114);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    color: white;
-  }
+.video-container {
+  width: 100%;
+  height: 50vh;
+}
 
-  .fade-out {
-    opacity: 0;
-  }
-
-  .video-container {
-    width: 100%;
-    height: 50vh;
-  }
-  
-  .video-container iframe {
-    width: 100%;
-    height: 100%;
-  }
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+}

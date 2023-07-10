@@ -3,15 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TUP LC2 - TP Integrador - Cine</title>
+    <title>TUP LC2 - TP Integrador 3 - Cine - Leandro Cabral</title>
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/pages/index.css" />
-    <link rel="shortcut icon" href="./img/IconoCine.png">
+    <link rel="shortcut icon" href="./img/IconoCine.png" />
     <!-- Scripts JS -->
     <script defer src="./js/common.js"></script>
     <script defer src="./js/pages/index.js"></script>
-
   </head>
 
   <body>
@@ -19,8 +18,8 @@
       <h1>
         <!--Titulo Cabecera-->
         <span>
-            <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon"/>
-            Cartelera de Cine
+          <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon" />
+          Cartelera de Cine
         </span>
       </h1>
       <nav>
@@ -38,15 +37,17 @@
       <section id="form-movie-new">
         <form onsubmit="return false;">
           <p>Agregar película favorita por código</p>
-          <input type="text" name="codigoPelicula" id="codigoPelicula">
-          <input type="button" onclick="agregarFavorito(document.getElementById('codigoPelicula').value)" value="Agregar">
+          <input type="text" name="codigoPelicula" id="codigoPelicula" />
+          <input
+            type="button"
+            onclick="agregarFavorito(document.getElementById('codigoPelicula').value)"
+            value="Agregar"
+          />
         </form>
         <!--Seccion para agregar una palicula favorita por codigo-->
       </section>
       <section id="sec-messages">
-        <div id="success-message">
-          Película agregada con éxito.
-        </div>
+        <div id="success-message">Película agregada con éxito.</div>
         <div id="duplicate-movie-message">
           La Película ingresada ya se encuentra almacenada.
         </div>
@@ -57,19 +58,21 @@
       </section>
       <section id="sec_peliculas">
         <div id="spinner-modal">
-
           <div id="loading-spinner" class="spinner"></div>
         </div>
 
-        
         <!--Seccion visualizacion de peliculas-->
         <div class="contenedorPeliculas" id="contenedorPeliculas"></div>
       </section>
       <section id="sec_paginador_peliculas">
         <!--Seccion de Paginacion-->
         <div class="paginacion" id="paginacion">
-          <button id="btn-anterior" onclick="irPaginaAnterior()">Anterior</button>
-          <button id="btn-siguiente" onclick="irPaginaSiguiente()">Siguiente</button>
+          <button id="btn-anterior" onclick="irPaginaAnterior()">
+            Anterior
+          </button>
+          <button id="btn-siguiente" onclick="irPaginaSiguiente()">
+            Siguiente
+          </button>
         </div>
       </section>
     </main>

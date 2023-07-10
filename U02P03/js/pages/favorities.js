@@ -7,7 +7,6 @@ setTimeout(() => {
   }, 1000);
 }, 1500);
 
-
 const eliminarFavorito = async (codigoPelicula) => {
   const codigo = parseInt(codigoPelicula);
 
@@ -28,7 +27,7 @@ const eliminarFavorito = async (codigoPelicula) => {
     divPelicula.classList.add("fade-out");
     setTimeout(() => {
       divPelicula.remove();
-    }, 300); 
+    }, 300);
   }
 
   document.getElementById("success-message").style.display = "block";
