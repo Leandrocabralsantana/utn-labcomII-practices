@@ -124,20 +124,13 @@ const irPaginaSiguiente = () => {
   }
 };
 
-mostrarPeliculas();
 
 mostrarPeliculas();
 
 const agregarFavorito = (codigoPelicula) => {
   const codigo = parseInt(codigoPelicula);
   if (isNaN(codigo)) {
-    const errorMessage = document.getElementById("api-error-message");
-    errorMessage.style.display = "block";
-    errorMessage.textContent = "El código sólo puede estar compuesto por números, refresque e ingrese un código correcto";
-    errorMessage.style.textAlign = "center";
-
-
-
+    document.getElementById("api-error-message").style.display = "block";
     return; // Detener la ejecución si no es un número
   }
   const options = {
