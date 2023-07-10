@@ -1,5 +1,7 @@
 console.log("Se ha cargado common.js exitosamente");
 
+const loadingSpinnerDuration = 1000;
+
 const autentificar = () => {
   const options = {
     method: "GET",
@@ -15,8 +17,6 @@ const autentificar = () => {
     .then((response) => console.log(response))
     .catch((err) => console.error(err));
 };
-
-
 autentificar();
 
 
@@ -24,27 +24,3 @@ const obtenerFavoritos = () => {
   const favoritosJSON = localStorage.getItem("FAVORITOS");
   return favoritosJSON ? JSON.parse(favoritosJSON) : [];
 };
-
-const isDuplicate = (codigoPelicula, favoritos) => {
-  return favoritos.includes(codigoPelicula);
-};
-
-const almacenarFavoritos = (favoritos) => {
-  localStorage.setItem("FAVORITOS", JSON.stringify(favoritos));
-};
-
-const isNumeric = (value) => {
-  return /^\d+$/.test(value);}
-
-const agregarPeliculaFavorita = (codigoPelicula) => {
-  const favoritos = obtenerFavoritos();
-
-  if (!isDuplicate(codigoPelicula, favoritos)) {
-    favoritos.push(codigoPelicula);
-    almacenarFavoritos(favoritos);
-    console.log("Película agregada a favoritos:", codigoPelicula);
-  } else {
-    console.error("La película ya ha sido ingresada");
-  }
-};
-

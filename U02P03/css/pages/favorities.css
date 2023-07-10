@@ -7,15 +7,34 @@ main{
   display: flex;
   justify-content: center;
 }
+.contenedorPeliculas {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  margin-bottom: 5%;
+}
+
+.contenedorPeliculas button {
+  margin-top: auto; 
+  align-self: center;
+  margin-bottom: 35px;
+
+}
+
 
 .contenedorPeliculasFavoritas {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
+  border-bottom: gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+  
 }
-.contenedorPeliculasFavoritas div{
+.contenedorPeliculasFavoritas div {
   max-width: 100%;
   margin: 0 auto;
+  padding-bottom: 20px;
+  transition: opacity 0.3s ease-in-out;
+
 }
 
 .contenedorPeliculas {
@@ -33,6 +52,12 @@ main{
     text-align: center;
     font-size: 16px;
     font-weight: 600;
+  }
+
+  .contenedorPeliculas #divVideo{
+    width: 100%;
+    height: 100%;
+
   }
   
 
@@ -54,4 +79,18 @@ main{
     padding: 20px;
     margin-bottom: 20px;
     color: white;
+  }
+
+  .fade-out {
+    opacity: 0;
+  }
+
+  .video-container {
+    width: 100%;
+    height: 50vh;
+  }
+  
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
   }

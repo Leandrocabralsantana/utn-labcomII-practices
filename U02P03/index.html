@@ -57,14 +57,20 @@
         </div>
       </section>
       <section id="sec_peliculas">
+        <div id="spinner-modal">
+
+          <div id="loading-spinner" class="spinner"></div>
+        </div>
+
+        
         <!--Seccion visualizacion de peliculas-->
         <div class="contenedorPeliculas" id="contenedorPeliculas"></div>
       </section>
       <section id="sec_paginador_peliculas">
         <!--Seccion de Paginacion-->
         <div class="paginacion" id="paginacion">
-          <button id="btnAnterior">Anterior</button>
-          <button id="btnSiguiente">Siguiente</button>
+          <button id="btn-anterior" onclick="irPaginaAnterior()">Anterior</button>
+          <button id="btn-siguiente" onclick="irPaginaSiguiente()">Siguiente</button>
         </div>
       </section>
     </main>

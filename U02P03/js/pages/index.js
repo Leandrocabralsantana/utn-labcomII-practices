@@ -1,4 +1,16 @@
-console.log("Se ha cargado index.js");
+
+let currentPage = 1;
+const moviesPerPage = 20;
+const totalPages = 1000;
+
+setTimeout(() => {
+  const spinnerModal = document.getElementById("spinner-modal");
+  spinnerModal.style.opacity = 0;
+
+  setTimeout(() => {
+    spinnerModal.style.display = "none";
+  }, 1000); // Damos un tiempo adicional para que la transición se complete
+}, 500);
 
 const mostrarPeliculas = () => {
   const options = {
@@ -10,11 +22,16 @@ const mostrarPeliculas = () => {
     },
   };
 
-  fetch("https://api.themoviedb.org/3/movie/popular", options)
+  const offset = (currentPage - 1) * moviesPerPage;
+  const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${currentPage}&region=US`;
+
+  fetch(url, options)
     .then((response) => response.json())
     .then((response) => {
       const peliculas = response.results;
       const contenedorPeliculas = document.getElementById("contenedorPeliculas");
+
+      contenedorPeliculas.innerHTML = ""; // Limpiar el contenedor de películas
 
       peliculas.forEach((pelicula) => {
         const divPelicula = document.createElement("div");
@@ -52,12 +69,14 @@ const mostrarPeliculas = () => {
           btnFavorites.addEventListener("click", () => {
             const codigoPelicula = pelicula.id;
             eliminarFavorito(codigoPelicula);
+            btnFavorites.textContent = "Agregar a Favoritos"; // Cambiar el texto del botón
           });
         } else {
           btnFavorites.textContent = "Agregar a Favoritos";
           btnFavorites.addEventListener("click", () => {
             const codigoPelicula = pelicula.id;
             agregarFavorito(codigoPelicula);
+            btnFavorites.textContent = "Eliminar de Favoritos"; // Cambiar el texto del botón
           });
         }
 
@@ -71,18 +90,56 @@ const mostrarPeliculas = () => {
 
         contenedorPeliculas.appendChild(divPelicula);
       });
+
+      // Actualizar la visibilidad de los botones de paginación
+      const btnAnterior = document.getElementById("btn-anterior");
+      const btnSiguiente = document.getElementById("btn-siguiente");
+
+      if (currentPage === 1) {
+        btnAnterior.style.display = "none";
+      } else {
+        btnAnterior.style.display = "block";
+      }
+
+      if (currentPage === totalPages) {
+        btnSiguiente.style.display = "none";
+      } else {
+        btnSiguiente.style.display = "block";
+      }
     })
     .catch((err) => console.error(err));
 };
 
+const irPaginaAnterior = () => {
+  if (currentPage > 1) {
+    currentPage--;
+    mostrarPeliculas();
+  }
+};
+
+const irPaginaSiguiente = () => {
+  if (currentPage < totalPages) {
+    currentPage++;
+    mostrarPeliculas();
+  }
+};
+
 mostrarPeliculas();
 
-agregarFavorito = (codigoPelicula) => {
-  console.log("Agregar a favoritos");
-  console.log(codigoPelicula);
+mostrarPeliculas();
 
+const agregarFavorito = (codigoPelicula) => {
   const codigo = parseInt(codigoPelicula);
+  if (isNaN(codigo)) {
+    const errorMessage = document.getElementById("api-error-message");
+    errorMessage.style.display = "block";
+    errorMessage.textContent = "El código sólo puede estar compuesto por números, refresque e ingrese un código correcto";
+    errorMessage.style.textAlign = "center";
 
+
+
+    return; // Detener la ejecución si no es un número
+  }
   const options = {
     method: "GET",
     headers: {
@@ -100,6 +157,7 @@ agregarFavorito = (codigoPelicula) => {
       return response.json();
     })
     .then((data) => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       let favoritos = localStorage.getItem("favoritos");
       if (favoritos) {
         favoritos = JSON.parse(favoritos);
@@ -133,6 +191,7 @@ agregarFavorito = (codigoPelicula) => {
 };
 
 eliminarFavorito = (codigoPelicula) => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
   console.log("Eliminar de favoritos");
   console.log(codigoPelicula);
 

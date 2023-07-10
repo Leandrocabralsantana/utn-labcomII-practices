@@ -11,9 +11,18 @@
   <link rel="shortcut icon" href="./img/IconoCine.png">
 
   <!-- Scripts JS -->
-  <script defer src="./js/common.js"></script>
-  <script defer src="./js/pages/help.js"></script>
+  <script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/pages/help.js"></script>
 
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init("tR8m_NQ4tJRzUb666");
+})();
+</script>
 
 </head>
 
@@ -22,9 +31,10 @@
     <h1>
       <!--Titulo Cabecera-->
       <span>
-        <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon"/>
+        <img src="./img/IconoCine.png" alt="Icono de Cine" class="icon" />
         Cartelera de Cine
-    </span>    </h1>
+      </span>
+    </h1>
     <nav>
       <!--Menu Superior-->
       <ul>
@@ -41,21 +51,20 @@
       <h2>Ayuda Cine App v.1</h2>
       <p>Esta App te permite consultar la cartelera de cine utilizando la API de <a href="https://www.themoviedb.org/documentation/api" target="_blank">The movie database API.</a></p>
       <p>Para poder registar sus películas favoritas deberá <a href="index.html">Agregar Favorito</a> desde la cartelera y luego visualizar nuestos favoritos desde <a href="favorities.html">Mis Favoritas.</a><br>
-      Si tiene alguna sugerencia o inconveniente por favor complete el siguiente formulario y envienoslo. Lo contactaremos a la brevedad.</p>
-   
-    </section>  
+        Si tiene alguna sugerencia o inconveniente por favor complete el siguiente formulario y envienoslo. Lo contactaremos a la brevedad.</p>
+    </section>
     <section id="form-cine_contacto">
       <!-- Sección donde se debe colocar el formulario de contacto-->
-      <form class="form-container">
+      <form class="form-container" id="contact-form">
         <div id="form-container-div">
           <p>Nombre:</p>
           <label for="name"></label>
-          <input type="text" id="name" name="name" required>
+          <input type="text" id="name" name="from_name" required>
         </div>
         <div>
           <p>Email:</p>
           <label for="email"></label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="from_email" required>
         </div>
         <div>
           <p>Mensaje:</p>

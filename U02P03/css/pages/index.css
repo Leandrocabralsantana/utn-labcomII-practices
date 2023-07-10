@@ -9,6 +9,7 @@
 
 #contenedorPeliculas {
   gap: 20px;
+  padding-bottom: 20px;
 }
 
 
@@ -57,6 +58,7 @@
   font-size: 14px;
   margin-bottom: 10px;
   display: none;
+  text-align: center;
 }
 
 #duplicate-movie-message {
@@ -71,6 +73,7 @@
   font-size: 14px;
   margin-bottom: 10px;
   display: none;
+  text-align: center;
 }
 #api-error-message {
   background-color: #dc3545;
@@ -84,6 +87,7 @@
   font-size: 14px;
   margin-bottom: 10px;
   display: none;
+  text-align: center;
 }
 
 
