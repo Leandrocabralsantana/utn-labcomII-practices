@@ -4,7 +4,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     spinnerModal.style.display = "none";
-  }, 1000); // Damos un tiempo adicional para que la transición se complete
+  }, 1000);
 }, 1500);
 
 
@@ -23,16 +23,14 @@ const eliminarFavorito = async (codigoPelicula) => {
 
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
-  // Eliminar el div de la película correspondiente
   const divPelicula = document.getElementById(`pelicula-${codigo}`);
   if (divPelicula) {
     divPelicula.classList.add("fade-out");
     setTimeout(() => {
       divPelicula.remove();
-    }, 300); // Esperar 0.3 segundos antes de eliminar el elemento
+    }, 300); 
   }
 
-  // Mostrar el mensaje de éxito
   document.getElementById("success-message").style.display = "block";
   document.getElementById("success-message").textContent =
     "Película eliminada de favoritos";
@@ -55,7 +53,7 @@ const mostrarPeliculasFavoritas = async () => {
     const favoritos = JSON.parse(storedFavorites);
     const contenedorPeliculas = document.getElementById("contenedorPeliculas");
 
-    contenedorPeliculas.innerHTML = ""; // Limpiar el contenedor de películas
+    contenedorPeliculas.innerHTML = "";
 
     for (const codigoPelicula of favoritos) {
       try {

@@ -47,8 +47,21 @@ form label{
     width: 500px;
     height: 35px;
     border-radius: 10px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin-top: 20px; 
+}
+
+#success-message{
+    background-color: green;
+    color: #FFFFFF; 
+    width: 500px;
+    height: 35px;
+    border-radius: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; 
+
 }
