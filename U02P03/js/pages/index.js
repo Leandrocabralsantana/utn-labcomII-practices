@@ -185,8 +185,6 @@ const agregarFavorito = (codigoPelicula) => {
 
 eliminarFavorito = (codigoPelicula) => {
   window.scrollTo({ top: 0, behavior: "smooth" });
-  console.log("Eliminar de favoritos");
-  console.log(codigoPelicula);
 
   const codigo = parseInt(codigoPelicula);
 
